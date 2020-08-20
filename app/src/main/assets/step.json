@@ -4,7 +4,7 @@
     "type_id": 5,
     "describe": "显示在其他应用上面",
     "intent": {
-      "uriData": "package&com.example.asmhelp",
+      "uriData": "package&com.example.autopermission",
       "actionName": "android.settings.action.MANAGE_OVERLAY_PERMISSION"
     },
     "step": [
@@ -28,7 +28,7 @@
     "type_id": 5,
     "describe": "允许修改系统设置",
     "intent": {
-      "uriData": "package&com.example.asmhelp",
+      "uriData": "package&com.example.autopermission",
       "actionName": "android.settings.action.MANAGE_WRITE_SETTINGS"
     },
     "step": [

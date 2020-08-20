@@ -8,13 +8,14 @@
 
 ## **截图**
 
+![](./picture4.jpg)
+
+![](./picture3.jpg)
+
 ![](./picture1.gif)
 
 ![](./picture2.gif)
 
-![](./picture3.jpg)
-
-![](./picture4.jpg)
 
 ## **About me**
 * [Email](LYYX@outlook.com)

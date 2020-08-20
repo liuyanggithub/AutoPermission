@@ -1,0 +1,50 @@
+[
+  {
+    "delay_time": 600,
+    "type_id": 5,
+    "describe": "显示在其他应用上面",
+    "intent": {
+      "uriData": "package&com.example.asmhelp",
+      "actionName": "android.settings.action.MANAGE_OVERLAY_PERMISSION"
+    },
+    "step": [
+      {
+        "delay_time": 600,
+        "find_text": "其他应用",
+        "action_type": "ACTION_CLICK",
+        "click_type": "child",
+        "reality_node_name": "android.widget.TextView",
+        "reality_node_id": ":id/checkbox&:id/switch_widget&switch"
+      },
+      {
+        "click_type": "system",
+        "delay_time": 600,
+        "action_type": "GLOBAL_ACTION_BACK"
+      }
+    ]
+  },
+  {
+    "delay_time": 600,
+    "type_id": 5,
+    "describe": "允许修改系统设置",
+    "intent": {
+      "uriData": "package&com.example.asmhelp",
+      "actionName": "android.settings.action.MANAGE_WRITE_SETTINGS"
+    },
+    "step": [
+      {
+        "delay_time": 600,
+        "find_text": "修改系统设置",
+        "action_type": "ACTION_CLICK",
+        "click_type": "child",
+        "reality_node_name": "android.widget.TextView",
+        "reality_node_id": ":id/checkbox&:id/switch_widget&switch"
+      },
+      {
+        "click_type": "system",
+        "delay_time": 600,
+        "action_type": "GLOBAL_ACTION_BACK"
+      }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_root"
+    android:onClick="close"
+    android:background="#4d000000">
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_permissiontps">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:onClick="close"
+            android:src="@mipmap/dialog_btn_close" />
+
+        <TextView
+            android:layout_below="@+id/iv_close"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="找到【AutoPermission】，开启无障碍服务"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tv_guide"
+            android:id="@+id/btn_open"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_common_corner_25"
+            android:text="去开启"
+            android:onClick="close"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

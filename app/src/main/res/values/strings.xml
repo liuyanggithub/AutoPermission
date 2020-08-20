@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AutoPermission</string>
+    <string name="readme">打开此功能可以帮助用户自动开启权限</string>
+    <string name="asm_name">【AutoPermission】 - 请开启☞</string>
+</resources>

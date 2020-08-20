@@ -8,11 +8,11 @@
 
 ## **截图**
 
+![](./picture1.gif)
+
 ![](./picture4.jpg)
 
 ![](./picture3.jpg)
-
-![](./picture1.gif)
 
 ![](./picture2.gif)
 

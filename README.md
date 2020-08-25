@@ -7,6 +7,8 @@
 - 可用json文件配置权限、操作步骤、延迟时间等
 - 可以适配多机型
 
+## [更多信息点击这里观看](https://blog.csdn.net/ly502541243/article/details/108201569)
+
 ## **配置**
 
 配置文件路径：***app/src/main/assets/step.json***

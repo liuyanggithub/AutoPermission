@@ -1,15 +1,22 @@
 package com.example.autopermission;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -22,6 +29,9 @@ import com.example.autopermission.util.ASMListener;
 import com.example.autopermission.util.AccessibilitUtil;
 import com.example.autopermission.util.FileUtils;
 import com.example.autopermission.util.SharePreferenceUtils;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -35,6 +45,20 @@ public class MainActivity extends AppCompatActivity implements ASMListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ASMAutoUtils.getInstance().setListener(this);
+        registerNotificationChannel();
+        XXPermissions.with(this)
+                .permission(Permission.READ_EXTERNAL_STORAGE)
+                .permission(Permission.WRITE_EXTERNAL_STORAGE)
+                .request(new OnPermissionCallback() {
+
+                    @Override
+                    public void onGranted(List<String> permissions, boolean all) {
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissions, boolean never) {
+                    }
+                });
     }
 
     @Override
@@ -148,5 +172,47 @@ public class MainActivity extends AppCompatActivity implements ASMListener {
 
     public void onKeyOpen(View view) {
         openAccessibilityService(view);
+    }
+
+    public void setWall(View view) {
+        Intent intent = new Intent();
+        intent.setAction("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
+        intent.putExtra("android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT",
+                new ComponentName(getApplicationContext().getPackageName(), WPService.class.getCanonicalName()));
+        startActivity(intent);
+    }
+
+    // 添加常驻通知
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void setNotification(View view) {
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.view_noti);
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "CHANNEL_ID");
+        Notification notification = notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
+                .setGroup("任务栏")
+                .setWhen(0L)
+                .setAutoCancel(true)
+                .setOngoing(false)
+                .setGroupSummary(false)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContent(remoteViews)
+                .setCustomBigContentView(remoteViews).build();
+        notification.flags = notification.flags | Notification.FLAG_NO_CLEAR;
+        notificationManager.notify(1024, notification);
+    }
+
+    /**
+     * 注册通知通道
+     */
+    private void registerNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel notificationChannel = mNotificationManager.getNotificationChannel("CHANNEL_ID");
+            if (notificationChannel == null) {
+                NotificationChannel channel = new NotificationChannel("CHANNEL_ID", "CHANNEL_NAME", NotificationManager.IMPORTANCE_HIGH);
+                channel.enableVibration(false);
+                mNotificationManager.createNotificationChannel(channel);
+            }
+        }
     }
 }

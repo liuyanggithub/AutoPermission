@@ -1,6 +1,8 @@
 package com.example.autopermission;
 
 import android.app.Application;
+import android.os.Handler;
+import android.os.Looper;
 
 /**
  * <Pre>
@@ -18,9 +20,18 @@ public class MyApplication extends Application {
         return appContext;
     }
 
+    public static Handler sHandler = new Handler(Looper.getMainLooper());
+
     @Override
     public void onCreate() {
         super.onCreate();
         appContext = this;
+    }
+
+    public static void post(Runnable runnable) {
+        Handler handler = sHandler;
+        if (handler != null && runnable != null) {
+            handler.post(runnable);
+        }
     }
 }

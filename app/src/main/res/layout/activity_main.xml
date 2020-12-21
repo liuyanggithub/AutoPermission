@@ -7,6 +7,7 @@
     tools:context="com.example.autopermission.MainActivity">
 
     <Button
+        android:visibility="gone"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:visibility="gone"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -26,6 +28,7 @@
 
 
     <Button
+        android:visibility="gone"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -36,12 +39,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="180dp"
         android:onClick="onKeyOpen"
         android:text="一键开启"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="260dp"
+        android:onClick="setWall"
+        android:text="设置壁纸"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="350dp"
+        android:onClick="setNotification"
+        android:text="开启通知栏"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

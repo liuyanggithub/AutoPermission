@@ -1,5 +1,7 @@
 package com.example.autopermission;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.service.wallpaper.WallpaperService;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -32,26 +34,29 @@ public class WPService extends WallpaperService {
         @Override
         public void onSurfaceCreated(SurfaceHolder holder) {
             super.onSurfaceCreated(holder);
-            a();
-            LiveWallpaperView xnWallpaperView = this.liveWallpaperView;
-            if (xnWallpaperView != null) {
-                xnWallpaperView.surfaceCreated(holder);
-            }
+            Canvas canvas = holder.lockCanvas();
+            canvas.drawColor(Color.RED);
+            holder.unlockCanvasAndPost(canvas);
+//            a();
+//            LiveWallpaperView xnWallpaperView = this.liveWallpaperView;
+//            if (xnWallpaperView != null) {
+//                xnWallpaperView.surfaceCreated(holder);
+//            }
         }
 
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             super.onSurfaceChanged(holder, format, width, height);
-            a();
+//            a();
         }
 
         @Override
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
-            LiveWallpaperView xnWallpaperView = this.liveWallpaperView;
-            if (xnWallpaperView != null) {
-                xnWallpaperView.surfaceDestroyed(holder);
-            }
+//            LiveWallpaperView xnWallpaperView = this.liveWallpaperView;
+//            if (xnWallpaperView != null) {
+//                xnWallpaperView.surfaceDestroyed(holder);
+//            }
         }
 
         private void a() {

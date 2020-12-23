@@ -2,6 +2,7 @@ package com.example.autopermission;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <Pre>
@@ -19,7 +20,9 @@ public class ShadowExecutors {
     public static final int c = ((b << 1) + 1);
     public static final long d = 30000;
     public static ScheduledExecutorService c(int i, String str) {
-        ScheduledExecutorService scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(Math.min(Math.max(1, i), c), new NamedThreadFactory(str));
+        ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(Math.min(Math.max(1, i), c), new NamedThreadFactory(str));
+        scheduledThreadPoolExecutor.setKeepAliveTime(30000, TimeUnit.MILLISECONDS);
+        scheduledThreadPoolExecutor.allowCoreThreadTimeOut(true);
         return scheduledThreadPoolExecutor;
     }
 }
